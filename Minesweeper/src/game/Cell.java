@@ -1,14 +1,18 @@
 package game;
 
+/* ------ this class is created for a single cell in the minesweeper board ----- */
+
 public class Cell {
     
     private boolean isMine; //is there a mine?
     private boolean isRevealed; //is it revealed in this cell?
     private int adjacentMines; //how many mines are there nearby
 
+
+    /* --------------------- we create constructor for cell --------------------- */
     public Cell() {
 
-        this.isMine = false;
+        this.isMine = false; 
         this.isRevealed = false;
         this.adjacentMines = 0;
 
@@ -31,7 +35,7 @@ public class Cell {
     }
 
     public void setRevealed(boolean isRevealed) {
-        this.isRevealed = true;
+        this.isRevealed = isRevealed;
     }
 
     public int getAdjacentMines() {
