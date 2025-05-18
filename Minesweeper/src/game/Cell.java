@@ -18,8 +18,6 @@ public class Cell {
 
     }
 
-
-
 /* --------------------------- Getters and setters -------------------------- */
 
     public boolean isMine() {

@@ -28,6 +28,7 @@ public class Board {
 
     }
     
+    /* ------------------------- placing mines in cells ------------------------- */
     private void placeMines() {
         Random rand = new Random(); //generate random obj
         int placed = 0; // initialise counter to track how many mines placed
@@ -43,19 +44,54 @@ public class Board {
             }
 
         }
-
-
-
-
-
-
-
-
     }
     
+
+
+    /* ----------------------- calculate the adjacentMines ---------------------- */
     public void calculateAdjacents() {
         
     }
+
+
+
+
+
+    /* ------------------------ print the board on screen ----------------------- */
+
+    public void PrintBoard() {
+        
+        System.out.print("   "); // Add space for row numbers
+        for (int col = 0; col < size; col++) { // loop through the columns
+            System.out.print(col + " "); // print column number
+        }
+        System.out.println(); // End the column header line
+
+        //new line for the row numbers
+        for (int row = 0; row < size; row++) {  // loop through the rows
+            System.out.print(row + "  "); // print row number
+
+
+            for (int col = 0; col < size; col++) { // loop through the columns
+                Cell cell = grid[row][col];
+                if (!cell.isRevealed()) {
+                    System.out.printf("- "); // hidden cells will display
+                } else if (cell.isMine()) {
+                    System.out.printf("* "); // revelead mines will show this
+                } else {
+                    System.out.printf(cell.getAdjacentMines() + " "); //will be empty 
+                }
+            }
+            System.out.println();
+            
+        }
+
+
+
+
+    }
+
+
 
 
 }
