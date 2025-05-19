@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Board {
 
-    private final int size = 10; //size of square board
+    private final int size = 5; //size of square board
     private final int mineCount = 10; // mines to hide
     
     private Cell[][] grid; //2d array to store cells
@@ -60,7 +60,7 @@ public class Board {
     /* ------------------------ print the board on screen ----------------------- */
 
     public void PrintBoard() {
-        
+
         System.out.print("   "); // Add space for row numbers
         for (int col = 0; col < size; col++) { // loop through the columns
             System.out.print(col + " "); // print column number
@@ -68,9 +68,8 @@ public class Board {
         System.out.println(); // End the column header line
 
         //new line for the row numbers
-        for (int row = 0; row < size; row++) {  // loop through the rows
+        for (int row = 0; row < size; row++) { // loop through the rows
             System.out.print(row + "  "); // print row number
-
 
             for (int col = 0; col < size; col++) { // loop through the columns
                 Cell cell = grid[row][col];
@@ -83,14 +82,44 @@ public class Board {
                 }
             }
             System.out.println();
-            
+
         }
-
-
-
-
     }
 
+
+    /* --------------------- method to check if the user won -------------------- */
+    /* --------------- // all non-mine cells have to be revelead //--------------- */
+
+    public boolean winStatus() {
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                Cell cell = grid[row][col];
+                if (!cell.isMine() && !cell.isRevealed()) {
+                    return false; //not won yet
+                }
+            }
+        }
+        return true; //win win
+    }
+
+
+
+
+    
+    /* ----------------------------- Getter methods ----------------------------- */
+    
+    //so that game class have access to size because our var is private in this class
+    public int getSize() { 
+        return size;
+    }
+
+    public Cell getCell(int x, int y) {
+        return grid[y][x];
+    }
+
+
+    
 
 
 
