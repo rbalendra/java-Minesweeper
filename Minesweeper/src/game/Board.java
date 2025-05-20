@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Board {
 
-    private final int size = 5; //size of square board
+    private final int size = 10; //size of square board
     private final int mineCount = 10; // mines to hide
     
     private Cell[][] grid; //2d array to store cells
@@ -51,7 +51,50 @@ public class Board {
     /* ----------------------- calculate the adjacentMines ---------------------- */
     public void calculateAdjacents() {
         
-    }
+        //looping through each cell in the grid
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                Cell cell = grid[row][col];
+
+                //skip if the cell is a mine
+                if (cell.isMine()) {
+                    continue;
+                }
+
+                //count adj mines
+                int count = 0;
+                
+                //check adjacent cell to current
+                for (int r = row - 1; r <= row + 1; r++) {
+                    for (int c = col - 1; c <= col + 1; c++) {
+
+
+                        if (r < 0 || r >= size || c < 0 || c >= size) {
+                            continue;
+                        }
+
+
+                        //skip our cell in middle
+                        if (r == row && c == col) {
+                            continue;
+                        }
+                        if (grid[r][c].isMine()) {
+                            count++;
+
+                        }
+
+                    }
+                }
+                    
+
+                cell.setAdjacentMines(count);
+                }
+                
+                
+            }
+        }
+    
 
 
 
@@ -78,7 +121,25 @@ public class Board {
                 } else if (cell.isMine()) {
                     System.out.printf("* "); // revelead mines will show this
                 } else {
-                    System.out.printf(cell.getAdjacentMines() + " "); //will be empty 
+                    int mineCount = cell.getAdjacentMines();
+                    if (mineCount == 0) {
+                        System.out.print("\u001B[34m" + "0" + "\u001B[0m ");
+                    } else {
+                        switch (mineCount) {
+                            case 1:
+                                System.out.print("\u001B[34m" + mineCount + "\u001B[0m "); // Blue
+                                break;
+                            case 2:
+                                System.out.print("\u001B[32m" + mineCount + "\u001B[0m "); // Green
+                                break;
+                            case 3:
+                                System.out.print("\u001B[31m" + mineCount + "\u001B[0m "); // Red
+                                break;
+                            default:
+                                System.out.print("\u001B[35m" + mineCount + "\u001B[0m "); // Purple
+                                break;
+                        }
+                    }
                 }
             }
             System.out.println();
