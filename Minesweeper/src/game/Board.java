@@ -4,10 +4,15 @@ import java.util.Random;
 
 public class Board {
 
-    private final int size = 10; //size of square board
-    private final int mineCount = 10; // mines to hide
+    private final int size = 5; //size of square board
+    private final int mineCount = 5; // mines to hide
     
-    private Cell[][] grid; //2d array to store cells
+    private Cell[][] grid; //2d array object to store cell objects
+
+
+
+
+
 
     /* ------------------ lets initialise the board with mines ------------------ */
 
@@ -24,7 +29,8 @@ public class Board {
 
         placeMines(); // randomly place mines
 
-        calculateAdjacents();
+        calculateAdjacents(); // need to calculate the adjacent mines
+        System.out.println("Number of mines placed----> " + "\u001B[35m" + mineCount + "\u001B[0m ");
 
     }
     
@@ -34,8 +40,8 @@ public class Board {
         int placed = 0; // initialise counter to track how many mines placed
 
         while (placed < mineCount) { //place mines until we meet the size
-            int row = rand.nextInt(size); //generate random 0-9
-            int col = rand.nextInt(size);
+            int row = rand.nextInt(size); //generate random row
+            int col = rand.nextInt(size); //generate random col
 
             Cell cell = grid[row][col]; //get the random row col position
             if (!cell.isMine()) {
@@ -49,15 +55,20 @@ public class Board {
 
 
     /* ----------------------- calculate the adjacentMines ---------------------- */
+   // the reason for this method is to count the number of mines around a cell
+   // for example if we have a cell at (1,1) then we need to check the cells
+   // (0,0), (0,1), (0,2), (1,0) etc to count the number of mines
+   // after checking we need to set the count in the cell object so that we can
+    // display it on the board
+     
     public void calculateAdjacents() {
         
         //looping through each cell in the grid
-
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 Cell cell = grid[row][col];
 
-                //skip if the cell is a mine
+                //skip if the cell is a mine because we don't need to count adjacent mines
                 if (cell.isMine()) {
                     continue;
                 }
@@ -65,22 +76,23 @@ public class Board {
                 //count adj mines
                 int count = 0;
                 
+
                 //check adjacent cell to current
                 for (int r = row - 1; r <= row + 1; r++) {
                     for (int c = col - 1; c <= col + 1; c++) {
-
-
+                        //check if the cell is out of bounds: for example if we are at 0,0 then we cannot check -1,-1
+                        //so we need to check if the cell is within the grid
                         if (r < 0 || r >= size || c < 0 || c >= size) {
-                            continue;
+                            continue; //skip if out of bounds
                         }
 
 
                         //skip our cell in middle
-                        if (r == row && c == col) {
+                        if (r == row && c == col) { 
                             continue;
                         }
                         if (grid[r][c].isMine()) {
-                            count++;
+                            count++; //if adjacent cell is is mine then increment the count
 
                         }
 
@@ -88,7 +100,7 @@ public class Board {
                 }
                     
 
-                cell.setAdjacentMines(count);
+                cell.setAdjacentMines(count); //set the count of adjacent mines
                 }
                 
                 

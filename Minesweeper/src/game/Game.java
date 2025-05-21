@@ -18,7 +18,7 @@ public class Game {
             int x;
             int y;
             System.out.println();
-            System.out.println("Enter x & y value: ");
+            System.out.println("Enter x & y value: (eg. 0 , press Enter,  1)"); //x,y coordinates
             x = scan.nextInt();
             y = scan.nextInt();
 
@@ -37,12 +37,12 @@ public class Game {
 private void revealCell(int x, int y) {
     Cell cell = board.getCell(x, y); //asking the board to give me cell obj at x,y
 
-    if (cell.isRevealed()) {
+    if (cell.isRevealed()) { // stops players from revealing the same cell again
         System.out.println("This cell is already revealed");
         return;
     }
 
-    cell.setRevealed(true); // reveal cell
+    cell.setRevealed(true); 
 
     if (cell.isMine()) {
         board.PrintBoard();
