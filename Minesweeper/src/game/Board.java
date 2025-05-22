@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Board {
 
-    private final int size = 5; //size of square board
-    private final int mineCount = 5; // mines to hide
+    private final int size = 10; //size of square board
+    private final int mineCount = 10; // mines to hide
     
     private Cell[][] grid; //2d array object to store cell objects
 
@@ -131,7 +131,7 @@ public class Board {
                 if (!cell.isRevealed()) {
                     System.out.printf("- "); // hidden cells will display
                 } else if (cell.isMine()) {
-                    System.out.printf("* "); // revelead mines will show this
+                    System.out.printf("\u001B[31m" + "* " + "\u001B[0m "); // revelead mines will show this
                 } else {
                     int mineCount = cell.getAdjacentMines();
                     if (mineCount == 0) {
