@@ -1,5 +1,5 @@
 # Project: Minesweeper
-![javaMInsweeper](https://github.com/user-attachments/assets/8e990639-ead0-4840-b8c9-89a8b80ca3df)
+![javaMInsweeper|200](https://github.com/user-attachments/assets/8e990639-ead0-4840-b8c9-89a8b80ca3df)
 
 ## MVP
 
