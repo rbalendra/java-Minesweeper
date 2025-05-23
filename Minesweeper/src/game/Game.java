@@ -46,7 +46,7 @@ private void revealCell(int x, int y) {
 
     if (cell.isMine()) {
         board.PrintBoard();
-        System.out.println("BOOM! BOOM! game over");
+        System.out.println("\u001B[31m" + "BOoooOOOOOOOooM!!!!! Game Over" + "\u001B[0m ");
         gameOver = true;
     }
 

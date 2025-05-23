@@ -129,9 +129,9 @@ public class Board {
             for (int col = 0; col < size; col++) { // loop through the columns
                 Cell cell = grid[row][col];
                 if (!cell.isRevealed()) {
-                    System.out.printf("- "); // hidden cells will display
+                    System.out.printf("■ "); // hidden cells will display
                 } else if (cell.isMine()) {
-                    System.out.printf("\u001B[31m" + "* " + "\u001B[0m "); // revelead mines will show this
+                    System.out.printf("\u001B[31m" + "* " + "\u001B[0m"); // revelead mines will show this
                 } else {
                     int mineCount = cell.getAdjacentMines();
                     if (mineCount == 0) {
