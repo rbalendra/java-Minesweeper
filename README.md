@@ -1,6 +1,6 @@
 # Project: Minesweeper
 
-![javaMInsweeper](https://github.com/user-attachments/assets/9b1fb0fe-5129-41d2-9ab6-6ec02e445a03)
+<img src="https://github.com/user-attachments/assets/9b1fb0fe-5129-41d2-9ab6-6ec02e445a03" alt="javaMInsweeper" width="300"/>
 
 ## MVP
 
