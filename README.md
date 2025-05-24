@@ -1,18 +1,30 @@
-# Project: Minesweeper
+# Project: Minesweeper (Simplified CLI edition)
 
 <img src="https://github.com/user-attachments/assets/9b1fb0fe-5129-41d2-9ab6-6ec02e445a03" alt="javaMInsweeper" width="300"/>
 
-## MVP
+## Game Structure
+- Classic minesweeper implementation in Java with 10x10 grid and 10 mines
+- Organised into 4 main classes: Cell, Board, Game and App
 
-Recreate a simplified version of the game Minesweeper to be played in the java console
-The game should be able to randomly generate 10 mines in a 10x10 grid
-The user will be able to enter a command that represents a coordinate to check a location for a mine
-The application will display a number from 0-8 depending on how many mines surround that location
-If the user selects a mine, the game will respond "boom!" and the game will be lost
-If every non-mine square has been revealed, the game is won
-Render the grid to the console after every user command
+## Key Components
+#### Cell Class 
+- Represents individual cells on board
+- Tracks if cell contains a mine or is revealed
+- Contains the getters/setters for all properties
 
-## Bonuses (optional)
+#### Board Class
+- Creates and prints the 10 x 10 grid of Cell objects
+- Randomly places the mines
+- Calculates the number of adjacent mines
+- renders the board with colour coded numbers
+- checks win condition (for all non-mine cells)
 
-Allow for the user to configure number of mines and grid size via a configuration.
-(Difficult) Discovering an empty square should reveal all squares around it, and cascade into other nearby empty squares
+#### Game Class
+- Manages game flow and user interaction
+- Handles player inputs for cell coordinates
+- Reveals cells and checks for win/loss conditions
+- Displays appropriate messages to the player
+
+#### App Class
+- Entry point for application
+- Instantiate the game
