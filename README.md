@@ -28,3 +28,9 @@
 #### App Class
 - Entry point for application
 - Instantiate the game
+
+## TO-DO
+- get user input to generate custom cell size
+- get user input to generate custom mine count
+- Discovering an empty square should reveal all squares around it, and cascade into other nearby empty squares
+- Translate to windows GUI
